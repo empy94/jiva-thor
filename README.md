@@ -1,18 +1,18 @@
 # Jiva Thor — aperçu expérimental
 
-Application Android pour accéder au site Jiva en ligne sur un appareil à deux écrans. L'écran principal affiche le jeu ; le second présente un carnet et des commandes de manette. Le site est privé : chaque utilisateur doit disposer de son propre accès. Aucune donnée de connexion n'est incluse dans le projet.
+Application Android pour jouer à Jiva en ligne sur un appareil à deux écrans. Le jeu reste sur l'écran principal ; le second écran propose quatre onglets : sorts, objets, carte et chat. Le site est privé et chaque joueur doit disposer d'un accès. Aucun identifiant ou mot de passe n'est inclus.
 
-## État du projet
+La carte reprend les tuiles et les repères visibles dans le jeu. Les points de vie, PA, PM et kamas sont lus depuis l'interface du jeu. Les raccourcis favoris sont configurables avec le bouton « + » : les sorts et objets proposés sont ceux présents dans la barre correspondante du jeu. Les favoris restent enregistrés sur l'appareil. Le chat est affiché localement et n'est pas envoyé vers un autre service.
 
-Il s'agit d'une première version, pas d'un assistant complet. Le carnet lit les indicateurs visibles du jeu : points de vie, points d'action, points de mouvement et sorts affichés. Le second écran propose des boutons pour choisir un sort, ouvrir l'inventaire ou le journal et terminer un tour. Il présente les objets du sac, leurs effets sélectionnés, les pods et les textes visibles du journal. Le mode automatique reconnaît l'ouverture du journal et de l'inventaire et tente de détecter un combat grâce à ses boutons. Les conseils tactiques avancés restent à développer. La reconnaissance des combats, le lancer de sorts depuis le panneau et les commandes physiques doivent encore être testés en situation.
+La détection de combat repose sur les boutons visibles du jeu et doit encore être vérifiée en combat. Les conseils restent limités aux indicateurs disponibles ; l'application ne calcule pas de stratégie complète. Une partie des commandes de manette est expérimentale et le ciblage des cases repose encore sur le tactile ou un curseur. Le jeu exige une connexion Internet.
 
-Le jeu reste dépendant du site et d'une connexion Internet. Le carnet utilise une icône chargée directement depuis le site, après authentification ; les ressources du jeu ne sont pas incluses dans ce dépôt.
+## Commandes expérimentales
 
-## Commandes prévues
+- L2 / R2 : choisir un sort de la barre du jeu.
+- Stick gauche ou croix : déplacer le curseur ; A : toucher.
+- X : inventaire ; Y : carte du monde ; L1 : caractéristiques ; R1 : sorts ; B ou Start : retour.
 
-- L2 / R2 : sélectionner un sort ; stick gauche ou croix : déplacer un curseur ; A : toucher.
-- X : inventaire ; Y : journal de quêtes ; L1 : caractéristiques ; R1 : sorts ; B ou Start : retour.
-- Le tactile reste utilisable. Le ciblage des cases repose pour l'instant sur un curseur ou le tactile ; une navigation complète à la manette reste à développer. Les commandes peuvent varier selon le mode de la manette et nécessitent une validation physique.
+Les commandes et le ciblage demandent une validation physique en jeu. Les icônes et cartes sont chargées depuis Jiva après authentification ; les ressources du jeu ne sont pas incluses dans ce dépôt.
 
 ## Construction
 
@@ -23,7 +23,3 @@ Windows, JDK 19, Android SDK platform 35 et build-tools 34.0.0 :
 ```
 
 Le fichier produit est `build/Jiva-Thor.apk`. Une clé locale de signature est créée dans le profil de l'utilisateur et n'est pas incluse dans le dépôt. Conserver cette clé pour installer les mises à jour signées sur le même appareil.
-
-## Confidentialité
-
-Le carnet lit uniquement quelques éléments affichés par la page et ne transmet pas ces données à un autre service. La connexion au jeu s'effectue auprès de Jiva. L'application ne contient ni mot de passe ni compte préconfiguré.

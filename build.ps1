@@ -2,7 +2,7 @@ param([Parameter(Mandatory=$true)][string]$Sdk,[Parameter(Mandatory=$true)][stri
 $ErrorActionPreference='Stop'
 $root=$PSScriptRoot; $bt=Join-Path $Sdk 'build-tools\34.0.0'; $jar=Join-Path $Sdk 'platforms\android-35\android.jar'; $out=Join-Path $root 'build'
 New-Item -ItemType Directory -Force -Path "$out\gen","$out\classes","$out\dex" | Out-Null
-& "$bt\aapt.exe" package -f -m -M "$root\AndroidManifest.xml" -S "$root\res" -I $jar -J "$out\gen" -F "$out\unsigned.apk"
+& "$bt\aapt.exe" package -f -m -M "$root\AndroidManifest.xml" -S "$root\res" -A "$root\assets" -I $jar -J "$out\gen" -F "$out\unsigned.apk"
 if($LASTEXITCODE){throw 'Packaging failed'}
 $sources=@(Get-ChildItem "$root\src","$out\gen" -Recurse -Filter '*.java' | ForEach-Object FullName)
 & "$Jdk\bin\javac.exe" --release 8 -encoding UTF-8 -classpath $jar -d "$out\classes" $sources
