@@ -13,6 +13,10 @@
     .filter(x => x.title && !/^Emplacement/.test(x.title)).map(x => make(x, x.title, 'spell'));
   const items = [...document.querySelectorAll('[data-testid^=item-slot-]')]
     .filter(x => x.title && !/^Emplacement/.test(x.title)).map(x => make(x, x.title, 'item'));
+  const catalogSpells = [...document.querySelectorAll('[data-testid=window-spells] .sp-row:not(.unknown)')]
+    .map(x => ({...make(x, x.querySelector('.sp-name')?.textContent?.trim() || '', 'spell'), details:x.querySelector('.sp-sub')?.textContent?.trim() || ''}));
+  const catalogItems = [...document.querySelectorAll('[data-testid=window-inventory] [data-testid^=bag-]')]
+    .map(x => make(x, x.querySelector('.sr-only')?.textContent?.trim() || '', 'item'));
   const buttons = [...document.querySelectorAll('button')].filter(x => x.getClientRects().length);
   const combat = buttons.some(x => /^(Fin du tour|Abandonner|Prêt)$/i.test((x.innerText || '').trim()));
   const view = q('[data-testid=minimap-view]');
@@ -29,5 +33,5 @@
   const filters = [...document.querySelectorAll('.chat-filter input[data-testid^=chat-filter-]')].map(x=>({id:x.dataset.testid,name:x.getAttribute('aria-label')||'',checked:x.checked,color:hex(getComputedStyle(x.parentElement).getPropertyValue('--c'))}));
   return JSON.stringify({hp:attr('[data-testid=hp-heart]','aria-label'),ap:attr('[data-testid=ap-badge]','aria-label'),
     mp:attr('[data-testid=mp-badge]','aria-label'),kamas:q('[data-testid=kamas]')?.textContent || '',
-    combat,spells,items,map,messages,filters});
+    combat,spells,items,catalogSpells,catalogItems,spellWindow:!!q('[data-testid=window-spells]'),itemWindow:!!q('[data-testid=window-inventory]'),map,messages,filters});
 })()
