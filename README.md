@@ -2,6 +2,16 @@
 
 Application Android pour jouer à Jiva en ligne sur un appareil à deux écrans. Le jeu reste sur l’écran principal ; le second écran réunit les sorts, les objets, la carte et le chat. Le site est privé : chaque joueur doit disposer de son propre accès. Aucun identifiant ou mot de passe n’est inclus.
 
+## Aperçu sur AYN Thor
+
+Captures du second écran en exploration : les raccourcis personnalisés et la carte du jeu.
+
+| Sorts et raccourcis | Carte et repères |
+|:---:|:---:|
+| ![Second écran avec les sorts favoris et la progression du personnage](docs/captures/raccourcis.png) | ![Second écran avec la carte et ses repères](docs/captures/carte.png) |
+
+[Télécharger la dernière version expérimentale](https://github.com/empy94/jiva-thor/releases)
+
 ## Second écran
 
 - Les points de vie, PA, PM et kamas reprennent les icônes et les informations visibles dans le jeu. Le niveau et, lorsque la jauge du portrait affiche l’expérience, les points actuels, le seuil suivant et le nombre de points restants sont affichés en haut.
@@ -12,7 +22,7 @@ Application Android pour jouer à Jiva en ligne sur un appareil à deux écrans.
 
 Le passage en mode combat repose sur les éléments visibles du jeu. Les informations affichées ne constituent pas un calcul complet de stratégie. L’ajout de raccourcis est suspendu pendant un combat ; leur utilisation et les conseils en combat demandent encore une validation en situation réelle. Le jeu exige une connexion Internet.
 
-Les icônes et cartes sont chargées depuis Jiva après authentification ; les ressources du jeu ne sont pas incluses dans ce dépôt. Les pistes de collaboration pour le second écran figurent dans [les idées pour le développeur](docs/IDEES_SECOND_ECRAN.md).
+Les icônes et cartes sont chargées depuis Jiva après authentification ; les fichiers de ressources du jeu ne sont pas distribués dans ce dépôt, à l’exception des captures illustratives ci-dessus. Les pistes de collaboration pour le second écran figurent dans [les idées pour le développeur](docs/IDEES_SECOND_ECRAN.md).
 
 ## Construction
 
