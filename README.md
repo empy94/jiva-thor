@@ -4,6 +4,10 @@ Application Android pour jouer à Jiva en ligne sur un appareil à deux écrans.
 
 ## Aperçu sur AYN Thor
 
+![Illustration de la console AYN Thor avec Jiva sur l’écran principal et le compagnon sur le second écran](docs/captures/ayn-thor-double-ecran.png)
+
+*Illustration de présentation réalisée à partir de captures du jeu et du compagnon ; le chat a été vidé pour protéger les informations personnelles.*
+
 Captures du second écran en exploration : les raccourcis personnalisés et la carte du jeu.
 
 | Sorts et raccourcis | Carte et repères |
