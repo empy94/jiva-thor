@@ -24,8 +24,10 @@
       hints:[...view.querySelectorAll('.world-hint')].map(e=>{const s=getComputedStyle(e);return {...rect(e),image:s.backgroundImage,position:s.backgroundPosition,size:s.backgroundSize}}),
       marker:q('[data-testid=minimap-me]')?rect(q('[data-testid=minimap-me]')):null};
   }
-  const messages = [...document.querySelectorAll('[data-testid=chat-lines] .chat-line')].slice(-5).map(x=>x.innerText.slice(0,250));
+  const hex = color => {color=(color||'').trim();if(/^#[0-9a-f]{6}$/i.test(color))return color;const m=color.match(/\d+/g);return m && m.length>=3 ? '#'+m.slice(0,3).map(v=>Number(v).toString(16).padStart(2,'0')).join('') : '#483f32'};
+  const messages = [...document.querySelectorAll('[data-testid=chat-lines] .chat-line')].slice(-40).map(x=>({text:x.innerText.slice(0,400),color:hex(getComputedStyle(x).color)}));
+  const filters = [...document.querySelectorAll('.chat-filter input[data-testid^=chat-filter-]')].map(x=>({id:x.dataset.testid,name:x.getAttribute('aria-label')||'',checked:x.checked,color:hex(getComputedStyle(x.parentElement).getPropertyValue('--c'))}));
   return JSON.stringify({hp:attr('[data-testid=hp-heart]','aria-label'),ap:attr('[data-testid=ap-badge]','aria-label'),
     mp:attr('[data-testid=mp-badge]','aria-label'),kamas:q('[data-testid=kamas]')?.textContent || '',
-    combat,spells,items,map,messages});
+    combat,spells,items,map,messages,filters});
 })()
